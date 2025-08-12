@@ -1,4 +1,5 @@
-from fastapi import APIRouter, Query
+from fastapi import APIRouter
+from pydantic import BaseModel
 from azure.core.credentials import AzureKeyCredential
 from azure.search.documents import SearchClient
 from dotenv import load_dotenv
@@ -22,7 +23,12 @@ AZURE_OPENAI_KEY = os.getenv("AZURE_OPENAI_KEY")
 
 router = APIRouter()
 
+# Request body model
+class SearchRequest(BaseModel):
+    query: str
+
 async def get_relevant_urls(question: str):
+    # Step 1: Query Azure Cognitive Search
     results = search_client.search(search_text=question)
     compiledDocs = []
     for i, result in enumerate(results):
@@ -33,6 +39,7 @@ async def get_relevant_urls(question: str):
             'fileURL': result['fileURL']
         })
 
+    # Step 2: Prepare prompt for Azure OpenAI
     prompt = (
         "You are a context aware chatbot of North Electric which is a power utility company. "
         "You have to give only 'fileURL' of the 3 or less most relevant objects. "
@@ -50,10 +57,11 @@ async def get_relevant_urls(question: str):
         data = response.json()
         return data["choices"][0]["message"]["content"].strip()
 
-@router.get("/search")
-async def search_endpoint(query: str = Query(..., description="Search query string")):
+# Step 3: POST endpoint
+@router.post("/search")
+async def search_endpoint(body: SearchRequest):
     try:
-        urls = await get_relevant_urls(query)
-        return {"query": query, "recommended_urls": urls}
+        urls = await get_relevant_urls(body.query)
+        return {"query": body.query, "recommended_urls": urls}
     except Exception as e:
         return {"error": str(e)}
