@@ -43,6 +43,7 @@ async def get_relevant_urls(question: str):
     prompt = (
         "You are a context aware chatbot of North Electric which is a power utility company. "
         "You have to give only 'fileURL' of the 3 or less most relevant objects. "
+        "Give these 'fileURL's as an array strings"
         f"[QUESTION START] {question} [QUESTION END] "
         f"[CONTEXT START] {compiledDocs} [CONTEXT END]"
     )

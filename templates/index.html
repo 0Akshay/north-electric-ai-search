@@ -12,9 +12,14 @@
         <div class="display-search-container">
             <div class="display-search-subcontainer">
                 <input type="text" id="displayText">
-                <a href="{{ url_for('ai_search') }}" class="displayBtn">AI Search</a>
+                <button onclick="aiSearch()" class="aiSearchBtn">AI Search</button>
             </div>
+            <div id="results"></div>
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', path='js/ai-search-home.js') }}"></script>
 {% endblock %}
