@@ -1,7 +1,7 @@
 const textArray = [
     "Why is my bill so high?",
-    "Will there an outage tommorow?",
-    "How do I request a new connection?",
+    "Will there be an outage tommorow?",
+    "How do I request for a new connection?",
     "When are prices in my area lowest?",
     "Are my bills pending?"
 ];
