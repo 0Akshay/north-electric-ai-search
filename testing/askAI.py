@@ -49,7 +49,7 @@ async def main():
             response.raise_for_status()
             data = response.json()
             print("Azure OpenAI Response:")
-            print(data)
+            print(data['choices'][0]['message']['content'])
         except httpx.HTTPError as e:
             print("Request failed:", e)
 
