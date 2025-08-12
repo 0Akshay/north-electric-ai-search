@@ -1,13 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>FastAPI LAN App</title>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
-    <h1>Hello from FastAPI over LAN!</h1>
-    <button id="clickBtn">Click Me</button>
+{% extends "base.html" %}
 
-    <script src="/static/script.js"></script>
-</body>
-</html>
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', path='css/index.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="full-bg">
+    <div class="text-center">
+        <h1 class="heading">Welcome to North Electric</h1>
+        <p class="tagline">Powering your world reliably and sustainably</p>
+        <div class="display-search-container">
+            <div class="display-search-subcontainer">
+                <input type="text" id="displayText">
+                <a href="{{ url_for('ai_search') }}" class="displayBtn">AI Search</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

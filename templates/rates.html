@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-5">
+    <h2>Electricity Rate Schedules</h2>
+    <p>Below are the current rate plans offered by North Electric. Rates are subject to change based on regulatory approval.</p>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Plan</th>
+                <th>Rate (per kWh)</th>
+                <th>Monthly Service Charge</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Standard Residential</td>
+                <td>$0.13</td>
+                <td>$15.00</td>
+                <td>Fixed rate per kWh for all usage levels.</td>
+            </tr>
+            <tr>
+                <td>Time-of-Use</td>
+                <td>Peak: $0.20 / Off-Peak: $0.09</td>
+                <td>$18.00</td>
+                <td>Lower rates during off-peak hours (9 PM - 7 AM).</td>
+            </tr>
+            <tr>
+                <td>Green Energy Plan</td>
+                <td>$0.15</td>
+                <td>$20.00</td>
+                <td>100% renewable energy sourced from solar and wind.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p class="mt-4"><em>Note: All rates are in USD and may vary by region. Please check your latest bill for exact rates.</em></p>
+</div>
+{% endblock %}

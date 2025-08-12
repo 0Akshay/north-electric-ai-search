@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', path='css/ai-search.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="chat-supercontainer">
+    <div class="chat-container">
+        <div class="chat-messages">
+            <div class="chat-message bot-message">Hello! I am North Electric's AI bot. How can I assist you today?</div>
+        </div>
+        <form id="chat-form" class="chat-form d-flex p-3 border-top">
+            <input id="chat-input" type="text" class="form-control me-2" placeholder="Type a message..." required>
+            <button id="send-btn" class="btn btn-primary">Send</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', path='js/ai-search.js') }}"></script>
+{% endblock %}

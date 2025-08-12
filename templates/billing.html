@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-5">
+    <h2>Billing & Payment Information</h2>
+    <p>North Electric offers flexible and convenient billing options to suit your needs. Below you can learn about payment methods, due dates, and how to manage your account.</p>
+
+    <hr>
+
+    <h4>📅 Billing Cycles & Due Dates</h4>
+    <p>Your bill is generated once a month based on your meter readings. Payment is due within 21 days of the bill issue date. Late payments may incur a 1.5% fee on the outstanding balance.</p>
+
+    <hr>
+
+    <h4>💳 Payment Options</h4>
+    <ul>
+        <li><strong>Online Portal:</strong> Log in to the <a href="#">Customer Portal</a> to pay using your credit/debit card or bank account.</li>
+        <li><strong>Auto-Pay:</strong> Set up recurring payments to avoid missing due dates.</li>
+        <li><strong>Mobile App:</strong> Use the North Electric app to view and pay bills on the go.</li>
+        <li><strong>By Mail:</strong> Send checks or money orders to North Electric Billing Dept., P.O. Box 1234, Springfield, USA.</li>
+        <li><strong>In Person:</strong> Pay at any authorized payment center or North Electric office.</li>
+    </ul>
+
+    <hr>
+
+    <h4>📈 Sample Bill Breakdown</h4>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Charge</th>
+                <th>Description</th>
+                <th>Amount (USD)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Energy Charge</td>
+                <td>500 kWh @ $0.13 per kWh</td>
+                <td>$65.00</td>
+            </tr>
+            <tr>
+                <td>Service Charge</td>
+                <td>Fixed monthly connection fee</td>
+                <td>$15.00</td>
+            </tr>
+            <tr>
+                <td>Taxes & Fees</td>
+                <td>State and local energy taxes</td>
+                <td>$5.20</td>
+            </tr>
+            <tr>
+                <th>Total Due</th>
+                <th></th>
+                <th>$85.20</th>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h4>⚠️ Late Payment Policy</h4>
+    <p>If payment is not received within 21 days, a late fee will be added, and service may be subject to disconnection after 45 days of non-payment. A reconnection fee may apply.</p>
+
+    <hr>
+
+    <h4>📞 Need Help?</h4>
+    <p>If you have any questions about your bill or payment options, contact our Billing Support Team at <strong>1-800-NE-BILL</strong> or email <a href="mailto:billing@northelectric.com">billing@northelectric.com</a>.</p>
+</div>
+{% endblock %}

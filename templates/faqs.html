@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-5">
+    <h2>Frequently Asked Questions</h2>
+    <p>Find answers to common questions about your North Electric service.</p>
+
+    <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="faq1">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                    How can I pay my electricity bill?
+                </button>
+            </h2>
+            <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    You can pay online via our customer portal, through the North Electric mobile app, by setting up auto-pay from your bank account, or by visiting any of our authorized payment centers.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="faq2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                    What should I do during a power outage?
+                </button>
+            </h2>
+            <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    First, check if your neighbors are also without power. If so, report the outage using our online portal or call our outage hotline at 1-800-NE-POWER. Do not attempt to repair any electrical equipment yourself.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="faq3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                    How do I start or stop service?
+                </button>
+            </h2>
+            <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    You can request to start or stop service through our website or by contacting our customer service team at least 2 business days in advance.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
