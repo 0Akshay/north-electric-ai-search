@@ -10,12 +10,27 @@ This project is a web-based application built with **FastAPI**, **Jinja2 templat
 - **JavaScript**: Vanilla JS for chat message handling
 
 ## Install
+```bash
 pip install -r requirements.txt
+```
+
+## Configure
+Create a .env file and add the following key value pairs:
+```env
+ENDPOINT=<Azure search endpoint>
+INDEX_NAME=<Name of the index on Azure>
+ADMIN_KEY=<Azure service admin key>
+```
+
 
 ## Run
+```bash
 uvicorn app:app --host 0.0.0.0 --port 8000
+```
 or
+```bash
 run.bat
+```
 
 ## Access from LAN
 1. Find your local IP (ipconfig / ifconfig)
