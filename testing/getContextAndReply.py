@@ -36,7 +36,7 @@ i = 1
 for result in results:
     if (i > 4):
         break
-    r = { 'content': result['content'][:400], 'fileURL': result['id'] }
+    r = { 'content': result['content'][:400], 'fileURL': result['fileURL'] }
     print(r)
     compiledDocs.append(r)
     print(i)

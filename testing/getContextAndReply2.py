@@ -36,16 +36,16 @@ i = 1
 for result in results:
     if (i > 4):
         break
-    r = { 'content': result['content'][:400], 'fileURL': result['id'] }
-    print(r)
+    r = { 'content': result['content'][:400], 'fileURL': result['fileURL'] }
+    # print(r)
     compiledDocs.append(r)
-    print(i)
+    # print(i)
     i=i+1
-    print()
+    # print()
     
-print(compiledDocs)
-print()
-print()
+# print(compiledDocs)
+# print()
+# print()
 
 
 AZURE_OPENAI_BASE = os.getenv("AZURE_OPENAI_ENDPOINT")  # e.g. "https://<your-resource>.openai.azure.com"
@@ -57,7 +57,7 @@ async def main():
     question = query
     context = compiledDocs
     
-    prompt = "You are a context aware chatbot of North Electric which is a power utility company. You are provided with a user question and context. Answer the question STRICTLY based on context and nothing else. You may paraphrase the answer. If the context is not sufficient say, \"Sorry, I don't have enough information on that.\". The context is an array of objects which have 'content' and 'fileURL' keys. At the end of your answer give the 'fileURL' of the object which has most relevant 'content' as per the question. Here is the question and the context: "+f"[QUESTION START] {question} [QUESTION END] "+f"[CONTEXT START] {context} [CONTEXT END]"
+    prompt = "You are a context aware chatbot of North Electric which is a power utility company. You are provided with a user question and context. The context is an array of objects which have 'content' and 'fileURL' keys. You have to give 'fileURL' of the 3 or less objects which have most relevant 'content' as per the question. Just give the URL's only and nothing else. Here is the question and the context: "+f"[QUESTION START] {question} [QUESTION END] "+f"[CONTEXT START] {context} [CONTEXT END]"
 
     endpoint = f"{AZURE_OPENAI_BASE}/openai/deployments/{AZURE_OPENAI_MODEL}/chat/completions?api-version={AZURE_OPENAI_VERSION}"
 
