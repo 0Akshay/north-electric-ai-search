@@ -1,8 +1,16 @@
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('displayText').addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            aiSearch();
+        }
+    });
+});
+
 function aiSearch() {
     document.getElementById('spinner').style.display = 'block';
     document.getElementById('results').innerHTML = '';
     var user_query = document.getElementById('displayText').value;
-    if (user_query=="") {
+    if (user_query == "") {
         console.log("Empty Query");
         return;
     }
@@ -27,11 +35,24 @@ function aiSearch() {
             console.log(result);
             const result_json = JSON.parse(result);
             const urls = JSON.parse(result_json.recommended_urls);
+
             console.log(urls);
             console.log(typeof urls);
             // Find a target container in the DOM
             const container = document.getElementById("results");
             container.innerHTML = ""; // Clear previous results
+
+            if (urls.length === 0) {
+                console.log('No recommended URLs found.');
+                const empty = document.createElement("p");
+                empty.textContent = "No results found";
+                // Inline styles
+                empty.style.color = "white";
+                empty.style.margin = "0";
+                empty.style.padding = "0";
+
+                container.appendChild(empty);
+            }
 
             // Loop over URLs and create <a> tags
             urls.forEach(url => {
@@ -45,5 +66,16 @@ function aiSearch() {
         .catch((error) => {
             console.error(error)
             document.getElementById('spinner').style.display = 'none';
+
+            const container = document.getElementById("results");
+            console.log('No recommended URLs found.');
+            const empty = document.createElement("p");
+            empty.textContent = "No results found";
+            // Inline styles
+            empty.style.color = "white";
+            empty.style.margin = "0";
+            empty.style.padding = "0";
+
+            container.appendChild(empty);
         });
 }
