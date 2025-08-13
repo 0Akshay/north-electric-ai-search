@@ -114,5 +114,10 @@
     -webkit-backdrop-filter: blur(3px);
     /* border: 1px solid rgba(255, 255, 255, 0.3); */
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    transition: background-color 100ms ease-in-out;
     width: auto;
+}
+
+#results > a:hover {
+    background-color: rgba(13, 45, 94, 0.58);
 }
