@@ -67,13 +67,13 @@ async def ask_ai(request: AskAIRequest):
         f"[QUESTION START] {query} [QUESTION END] [CONTEXT START] {compiled_docs} [CONTEXT END]"
     )
 
-    print("QUERY")
-    print(query)
-    print("COMPILED QUERY")
-    print()
-    print("COMPILED DOCS")
-    print(compiled_docs)
-    print("END COMPILED DOCS")
+    # print("QUERY")
+    # print(query)
+    # print("COMPILED QUERY")
+    # print()
+    # print("COMPILED DOCS")
+    # print(compiled_docs)
+    # print("END COMPILED DOCS")
     
     # Azure OpenAI endpoint
     endpoint = f"{AZURE_OPENAI_BASE}/openai/deployments/{AZURE_OPENAI_MODEL}/chat/completions?api-version={AZURE_OPENAI_VERSION}"

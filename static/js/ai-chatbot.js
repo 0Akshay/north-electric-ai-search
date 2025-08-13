@@ -10,9 +10,36 @@ document.addEventListener("DOMContentLoaded", () => {
             if (msg) {
                 addMessage(msg, "user-message");
                 chatInput.value = "";
-                setTimeout(() => {
-                    addMessage("This is a sample AI response from North Electric.", "bot-message");
-                }, 500);
+
+                // setTimeout(() => {
+                //     addMessage("This is a sample AI response from North Electric.", "bot-message");
+                // }, 500);
+
+                const myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/json");
+
+                const raw = JSON.stringify({
+                    "question": msg
+                });
+
+                const requestOptions = {
+                    method: "POST",
+                    headers: myHeaders,
+                    body: raw,
+                    redirect: "follow"
+                };
+
+                fetch("http://localhost:8000/askai", requestOptions)
+                .then((response) => response.text())
+                .then((result) => {
+                    console.log(result);
+                    result_json = JSON.parse(result);
+                    console.log(result_json);
+                    result_answer = result_json.answer;
+                    console.log(result_answer);
+                    addMessage(result_answer, "bot-message");
+                })
+                .catch((error) => console.error(error));
             }
         });
     }
