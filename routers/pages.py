@@ -34,9 +34,9 @@ async def news(request: Request):
 async def billing(request: Request):
     return templates.TemplateResponse("billing.html", {"request": request})
 
-@router.get("/ai-search", response_class=HTMLResponse)
-async def ai_search(request: Request):
-    return templates.TemplateResponse("ai-search.html", {"request": request})
+@router.get("/ai-chatbot", response_class=HTMLResponse)
+async def ai_chatbot(request: Request):
+    return templates.TemplateResponse("ai-chatbot.html", {"request": request})
 
 # API Routes
 @router.get("/api/ping")

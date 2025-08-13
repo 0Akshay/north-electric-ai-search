@@ -1,7 +1,3 @@
-// document.getElementById("send-btn").addEventListener("click", function () {
-//     alert("Button clicked!");
-// });
-
 document.addEventListener("DOMContentLoaded", () => {
     const chatForm = document.getElementById("chat-form");
     const chatInput = document.getElementById("chat-input");
@@ -29,8 +25,3 @@ document.addEventListener("DOMContentLoaded", () => {
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 });
-
-
-// function clicked() {
-//     alert("yolo");
-// }

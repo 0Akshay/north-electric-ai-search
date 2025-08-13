@@ -17,7 +17,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="{{ url_for('ai_search') }}">AI Search</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('ai_chatbot') }}">AI Chat</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ url_for('billing') }}">Billing</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ url_for('faqs') }}">FAQs</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ url_for('guides') }}">Guides</a></li>
@@ -32,7 +32,7 @@
 {% block content %}{% endblock %}
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="{{ url_for('static', path='js/displaySearchBar.js') }}"></script>
+
 
 
 {% block scripts %}{% endblock %}
