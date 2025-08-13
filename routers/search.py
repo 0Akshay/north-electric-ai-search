@@ -30,39 +30,46 @@ class SearchRequest(BaseModel):
 async def get_relevant_urls(question: str):
     # Step 1: Query Azure Cognitive Search
     results = search_client.search(search_text=question)
+    # print(results)
+    # print("RESULTEND\n")
     compiledDocs = []
     for i, result in enumerate(results):
-        if i >= 4:
+        # print(result)
+        if i >= 3:
             break
         compiledDocs.append({
-            'content': result['content'][:400],
+            'category': result['category'],
             'fileURL': result['fileURL']
         })
+    
+    print()
+    print(compiledDocs)
+    return compiledDocs
 
     # Step 2: Prepare prompt for Azure OpenAI
-    prompt = (
-        "You are a context aware chatbot of North Electric which is a power utility company. "
-        "You have to give only 'fileURL' of the 3 or less most relevant objects. "
-        "Give these 'fileURL's as an array strings"
-        f"[QUESTION START] {question} [QUESTION END] "
-        f"[CONTEXT START] {compiledDocs} [CONTEXT END]"
-    )
+    # prompt = (
+    #     "You are a context aware chatbot of North Electric which is a power utility company. "
+    #     "You have to give only 'fileURL' of the 3 or less most relevant objects. "
+    #     "Give these 'fileURL's as an array strings"
+    #     f"[QUESTION START] {question} [QUESTION END] "
+    #     f"[CONTEXT START] {compiledDocs} [CONTEXT END]"
+    # )
 
-    endpoint_url = f"{AZURE_OPENAI_BASE}/openai/deployments/{AZURE_OPENAI_MODEL}/chat/completions?api-version={AZURE_OPENAI_VERSION}"
-    payload = {"messages": [{"role": "user", "content": prompt}], "max_tokens": 100}
-    headers = {"Content-Type": "application/json", "api-key": AZURE_OPENAI_KEY}
+    # endpoint_url = f"{AZURE_OPENAI_BASE}/openai/deployments/{AZURE_OPENAI_MODEL}/chat/completions?api-version={AZURE_OPENAI_VERSION}"
+    # payload = {"messages": [{"role": "user", "content": prompt}], "max_tokens": 100}
+    # headers = {"Content-Type": "application/json", "api-key": AZURE_OPENAI_KEY}
 
-    async with httpx.AsyncClient(timeout=60) as client:
-        response = await client.post(endpoint_url, headers=headers, json=payload)
-        response.raise_for_status()
-        data = response.json()
-        return data["choices"][0]["message"]["content"].strip()
+    # async with httpx.AsyncClient(timeout=60) as client:
+    #     response = await client.post(endpoint_url, headers=headers, json=payload)
+    #     response.raise_for_status()
+    #     data = response.json()
+    #     return data["choices"][0]["message"]["content"].strip()
 
 # Step 3: POST endpoint
 @router.post("/search")
 async def search_endpoint(body: SearchRequest):
     try:
         urls = await get_relevant_urls(body.query)
-        return {"query": body.query, "recommended_urls": urls}
+        return urls
     except Exception as e:
         return {"error": str(e)}
