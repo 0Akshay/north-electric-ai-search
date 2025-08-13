@@ -1,4 +1,6 @@
 function aiSearch() {
+    document.getElementById('spinner').style.display = 'block';
+    document.getElementById('results').innerHTML = '';
     var user_query = document.getElementById('displayText').value;
     if (user_query=="") {
         console.log("Empty Query");
@@ -21,6 +23,7 @@ function aiSearch() {
     fetch("http://localhost:8000/search", requestOptions)
         .then((response) => response.text())
         .then((result) => {
+            document.getElementById('spinner').style.display = 'none';
             console.log(result);
             const result_json = JSON.parse(result);
             const urls = JSON.parse(result_json.recommended_urls);
@@ -39,5 +42,8 @@ function aiSearch() {
                 container.appendChild(document.createElement("br")); // line break
             });
         })
-        .catch((error) => console.error(error));
+        .catch((error) => {
+            console.error(error)
+            document.getElementById('spinner').style.display = 'none';
+        });
 }
